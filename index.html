@@ -434,6 +434,51 @@
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .certs-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+  }
+  .modal-overlay.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-close {
+    position: fixed;
+    top: 20px; right: 30px;
+    width: 44px; height: 44px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+  .modal-back {
+    position: fixed;
+    top: 20px; left: 30px;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); text-decoration: none; font-size: 14px;
+    z-index: 1001;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .modal-back:hover { border-color: var(--accent); color: var(--accent); }
+
 </style>
 </head>
 <body>
@@ -635,7 +680,7 @@
         <div class="tags" style="margin-top:8px">
           <span class="tag">CrewAI</span><span class="tag">RAG</span><span class="tag">GPT-4o-mini</span><span class="tag">Telegram Bot</span><span class="tag">Railway</span><span class="tag">RSS Feed</span>
         </div>
-        <a href="swissmacro.html" class="cert-link" style="margin-top:8px" data-de="Projekt ansehen →" data-en="View Project →">Projekt ansehen →</a>
+        <a href="#" onclick="openModal('swissmacro'); return false;" class="cert-link" style="margin-top:8px" data-de="Projekt ansehen →" data-en="View Project →">Projekt ansehen →</a>
       </div>
 
       <div class="cert-card reveal">
@@ -651,7 +696,7 @@
         <div class="tags" style="margin-top:8px">
           <span class="tag">Pine Script</span><span class="tag">tradingview.to</span><span class="tag">Webhooks</span><span class="tag">Render</span><span class="tag">dYdX</span><span class="tag">Backtesting</span>
         </div>
-        <a href="tradingbot.html" class="cert-link" style="margin-top:8px" data-de="Projekt ansehen" data-en="View Project">Projekt ansehen →</a>
+        <a href="#" onclick="openModal('tradingbot'); return false;" class="cert-link" style="margin-top:8px" data-de="Projekt ansehen" data-en="View Project">Projekt ansehen →</a>
       </div>
 
       <div class="cert-card reveal">
@@ -1106,5 +1151,448 @@
     }, 800);
   }
 </script>
+
+<!-- SWISSMACRO MODAL -->
+<div id="modal-swissmacro" class="modal-overlay">
+  <button class="modal-close" onclick="closeModal('swissmacro')">&times;</button>
+  <div class="modal-back" onclick="closeModal('swissmacro')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zurück
+  </div>
+  
+
+
+
+<section class="project-hero">
+  <div class="project-badge">
+    <span class="project-badge-dot"></span>
+    Live & funktionsfähig
+  </div>
+  <h1>🚀 SwissMacro <span>AI Agent</span> v1.0</h1>
+  <p class="project-subtitle">Ich schreibe auf Substack über Makro, Geopolitik und Liquiditätsrisiken. Dieser Bot hat <strong style="color: var(--accent)">alle meine Artikel</strong> gelesen — und antwortet, als wäre ich es selbst. Keine generischen KI-Phrasen, nur meine Perspektive.</p>
+  <div class="project-ctas">
+    <a href="https://t.me/SwissMacro_Analyst_Bot" target="_blank" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      → Telegram Bot öffnen
+    </a>
+    <a href="https://aaronashraf.substack.com" target="_blank" class="btn btn-outline">
+      → Substack lesen
+    </a>
+  </div>
+</section>
+
+<section class="project-content">
+
+  <!-- DEMO -->
+  <div class="demo-section">
+    <div class="demo-header">
+      <span class="telegram-icon">📱</span>
+      <h3>Teste den SwissMacro AI Agent direkt</h3>
+    </div>
+    
+    <p class="demo-description">
+      Schicke dem Bot einfach eine Frage zu Makroökonomie, Geopolitik, Energie oder der Schweiz – er antwortet basierend auf meinen Substack-Artikeln.
+    </p>
+    
+    <div class="bot-link-box">
+      <a href="https://t.me/SwissMacro_Analyst_Bot" target="_blank" class="bot-button">
+        <span class="icon">✉️</span>
+        <div>
+          <strong>@SwissMacro_Analyst_Bot</strong><br>
+          <small>Auf Telegram öffnen</small>
+        </div>
+      </a>
+    </div>
+    
+    <div class="demo-hint">
+      💡 <strong>Tipp:</strong> Probiere Fragen wie „Was passiert mit der Schweiz bei einer Eskalation in Hormuz?" oder „Wie sieht die aktuelle Liquiditätslage aus?"
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <h2 class="section-title">Was der Bot kann</h2>
+  <div class="info-card">
+    <p>Der Bot liest alle meine Substack-Artikel automatisch über den RSS Feed ein und speichert sie als durchsuchbare Wissensbasis (RAG). Wenn du eine Frage stellst, arbeiten vier spezialisierte Agenten zusammen (CrewAI): Einer sucht die relevanten Stellen, einer analysiert den Makro-Kontext, einer ordnet es für die Schweiz ein, und einer formuliert die finale Antwort. Das Ganze läuft auf Python mit GPT-4o-mini als Sprachmodell und wird über die Telegram Bot API ausgeliefert. So kannst du (oder andere) Fragen zu meinen eigenen Analysen stellen — und bekommst Antworten, die auf meinen echten Texten basieren.</p>
+  </div>
+
+  <!-- FEATURES -->
+  <h2 class="section-title">Was ihn besonders macht</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-ico">🎯</div>
+      <div class="feature-title">Nur mein Wissen</div>
+      <div class="feature-desc">Der Bot erfindet nichts. Wenn ich es nicht geschrieben habe, sagt er es auch nicht.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-ico">🧠</div>
+      <div class="feature-title">Denkt wie ich</div>
+      <div class="feature-desc">Vier spezialisierte Agenten arbeiten zusammen — einer davon kennt sich mit der Schweiz aus.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-ico">📡</div>
+      <div class="feature-title">Immer aktuell</div>
+      <div class="feature-desc">Neue Substack-Artikel werden automatisch eingelesen. Der Bot lernt mit.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-ico">📎</div>
+      <div class="feature-title">Nachvollziehbar</div>
+      <div class="feature-desc">Jede Antwort basiert auf konkreten Artikeln — du kannst nachlesen, woher die Info kommt.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-ico">📱</div>
+      <div class="feature-title">Telegram-ready</div>
+      <div class="feature-desc">Kurz, knackig, mobil-optimiert. Keine Textwände, sondern Klartext.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-ico">🛡️</div>
+      <div class="feature-title">Stabil</div>
+      <div class="feature-desc">Wenn was schiefläuft, gibt's eine saubere Fehlermeldung — kein Absturz.</div>
+    </div>
+  </div>
+
+  <!-- AGENTS -->
+  <h2 class="section-title">Das Team im Bot</h2>
+  <div class="agents-list">
+    <div class="agent-item">
+      <div class="agent-ico">🔍</div>
+      <div>
+        <div class="agent-name">Researcher</div>
+        <div class="agent-role">Findet die relevanten Stellen in meinen Artikeln</div>
+      </div>
+    </div>
+    <div class="agent-item">
+      <div class="agent-ico">📊</div>
+      <div>
+        <div class="agent-name">Macro Analyst</div>
+        <div class="agent-role">Bringt die Puzzleteile zusammen — Liquidität, Energie, Geopolitik</div>
+      </div>
+    </div>
+    <div class="agent-item">
+      <div class="agent-ico">🇨🇭</div>
+      <div>
+        <div class="agent-name">Swiss Expert</div>
+        <div class="agent-role">„Was heisst das für die Schweiz?" — dieser Agent weiss es</div>
+      </div>
+    </div>
+    <div class="agent-item">
+      <div class="agent-ico">✍️</div>
+      <div>
+        <div class="agent-name">Writer</div>
+        <div class="agent-role">Macht aus der Analyse eine lesbare Telegram-Nachricht</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <h2 class="section-title">Unter der Haube</h2>
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div>
+        <div class="stack-label">Backend</div>
+        <div class="stack-value">Python + CrewAI</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div>
+        <div class="stack-label">Wissensbasis</div>
+        <div class="stack-value">RSS Feed + RAG</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div>
+        <div class="stack-label">KI-Modell</div>
+        <div class="stack-value">GPT-4o-mini</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div>
+        <div class="stack-label">Interface</div>
+        <div class="stack-value">Telegram Bot</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div>
+        <div class="stack-label">Hosting</div>
+        <div class="stack-value">Railway</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOAL -->
+  <h2 class="section-title">Das Ziel</h2>
+  <div class="info-card">
+    <p>Der Bot lernt aus meinen Daten und antwortet auch so. Ich kann ihn fragen, was ich vor Monaten über Liquidität geschrieben habe — und er findet es. Andere können ihn fragen, wie ich zu einem Thema stehe. Er ist wie ein Suchassistent für meine eigenen Texte.</p>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">CrewAI</span>
+    <span class="tag">RAG</span>
+    <span class="tag">GPT-4o-mini</span>
+    <span class="tag">Telegram</span>
+    <span class="tag">Railway</span>
+  </div>
+
+  <!-- STATUS -->
+  <div class="info-card" style="margin-top: 32px; text-align: center;">
+    <p style="color: var(--accent); font-weight: 500; font-size: 16px;">✅ Status: Live & funktionsfähig</p>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Aaron Ashraf</p>
+  <p>ICT Fachmann EFZ · Zürich, Schweiz</p>
+</footer>
+
+
+</div>
+
+<!-- TRADINGBOT MODAL -->
+<div id="modal-tradingbot" class="modal-overlay">
+  <button class="modal-close" onclick="closeModal('tradingbot')">&times;</button>
+  <div class="modal-back" onclick="closeModal('tradingbot')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zurück
+  </div>
+  
+
+
+
+<section class="project-hero">
+  <div class="project-badge">
+    📊 Projekt abgeschlossen
+  </div>
+  <h1>Algorithmische <span>Handels-Infrastruktur</span> & Execution Engine</h1>
+  <p class="project-subtitle">
+    Entwicklung einer robusten Brücke zwischen Analyse-Plattformen (TradingView) und dezentralen/zentralen Börsen (dYdX) für automatisierte Trade-Execution mit minimaler Latenz.
+  </p>
+</section>
+
+<section class="project-content">
+  
+  <!-- BACKTEST RESULTS -->
+  <h2 class="section-title">Backtest-Ergebnisse</h2>
+  
+  <div class="backtest-section">
+    <!-- Backtest 1: Fourier ATR Strategy -->
+    <div class="backtest-card">
+      <div class="backtest-header">
+        <div class="backtest-title">
+          <span>📈</span> Fourier Adjusted ATR Strategy
+        </div>
+        <div class="backtest-period">Gold · 1H · 2009-02-24 → 2025-04-07</div>
+      </div>
+      <div class="backtest-stats">
+        <div class="stat-box">
+          <div class="stat-label">Gesamt P&L</div>
+          <div class="stat-value profit">+$2.647.552</div>
+          <div class="stat-sub">+264,76%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Max Drawdown</div>
+          <div class="stat-value">$344.882</div>
+          <div class="stat-sub">18,71%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Trades</div>
+          <div class="stat-value">2.674</div>
+          <div class="stat-sub">insgesamt</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Win Rate</div>
+          <div class="stat-value">42,03%</div>
+          <div class="stat-sub">1124/1342</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Profit Factor</div>
+          <div class="stat-value profit">1,308</div>
+          <div class="stat-sub">&nbsp;</div>
+        </div>
+      </div>
+      <div class="backtest-image">
+        <img src="backtest-fourier.png" alt="Fourier ATR Backtest Chart">
+        <div class="source">Quelle: TradingView</div>
+      </div>
+    </div>
+
+    <!-- Backtest 2: ATR Daily Strategy -->
+    <div class="backtest-card">
+      <div class="backtest-header">
+        <div class="backtest-title">
+          <span>🎯</span> ATR(5) Daily Strategy with 9:30 Price & Stop Loss
+        </div>
+        <div class="backtest-period">NASDAQ · 2H</div>
+      </div>
+      <div class="backtest-stats">
+        <div class="stat-box">
+          <div class="stat-label">Gesamt P&L</div>
+          <div class="stat-value profit">+$133.850</div>
+          <div class="stat-sub">+13,43%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Max Drawdown</div>
+          <div class="stat-value">$45.115</div>
+          <div class="stat-sub">3,99%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Trades</div>
+          <div class="stat-value">558</div>
+          <div class="stat-sub">insgesamt</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Win Rate</div>
+          <div class="stat-value">49,10%</div>
+          <div class="stat-sub">274/284</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Profit Factor</div>
+          <div class="stat-value profit">1,25</div>
+          <div class="stat-sub">&nbsp;</div>
+        </div>
+      </div>
+      <div class="backtest-image">
+        <img src="backtest-atr.png" alt="ATR Daily Backtest Chart">
+        <div class="source">Quelle: TradingView</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <h2 class="section-title">Technische Schwerpunkte</h2>
+  
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-ico">🔗</div>
+      <div class="tech-title">Webhooks & API-Integration</div>
+      <div class="tech-desc">Middleware zur Echtzeit-Verarbeitung von TradingView-Signalen und Umwandlung in API-Orders für dYdX.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-ico">⚙️</div>
+      <div class="tech-title">Execution Management</div>
+      <div class="tech-desc">Risk-Management-Logiken mit Position Sizing und Auto-Stop-Loss für präzise Strategie-Umsetzung.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-ico">🔄</div>
+      <div class="tech-title">Multi-Plattform-Sync</div>
+      <div class="tech-desc">Orchestrierung von Signalen über verschiedene Handelsumgebungen hinweg.</div>
+    </div>
+  </div>
+
+  <!-- STACK TAGS -->
+  <div class="stack-tags">
+    <div class="stack-tag"><span class="icon">🐍</span> Python</div>
+    <div class="stack-tag"><span class="icon">📊</span> TradingView</div>
+    <div class="stack-tag"><span class="icon">🌲</span> PineScript</div>
+    <div class="stack-tag"><span class="icon">⛓️</span> dYdX</div>
+    <div class="stack-tag"><span class="icon">🔌</span> REST API</div>
+    <div class="stack-tag"><span class="icon">⚡</span> Webhooks</div>
+    <div class="stack-tag"><span class="icon">🔐</span> HMAC Auth</div>
+  </div>
+
+  <!-- CODE EXAMPLE -->
+  <h2 class="section-title">Strategy Code Sample</h2>
+  
+  <div class="code-section">
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-lang">PineScript v5</div>
+        <div class="code-file">atr_daily_strategy.pine</div>
+      </div>
+      <div class="code-content">
+        <pre><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"ATR(5) Daily Strategy with 9:30 Price and Stop Loss"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Calculate ATR(5) on the daily timeframe</span>
+<span class="variable">atrDaily</span> = request.security(syminfo.tickerid, <span class="string">"D"</span>, ta.atr(<span class="number">5</span>))
+
+<span class="comment">// Check if current bar is within trading session (9:30 AM to 4:00 PM)</span>
+<span class="variable">inSession</span> = <span class="keyword">not</span> na(time(timeframe.period, <span class="string">"0830-1500"</span>))
+
+<span class="comment">// Capture the 9:30 price (first bar of the session)</span>
+<span class="keyword">var float</span> <span class="variable">open930</span> = na
+<span class="variable">isFirstBarOfSession</span> = inSession <span class="keyword">and not</span> inSession[<span class="number">1</span>]
+<span class="keyword">if</span> isFirstBarOfSession
+    <span class="variable">open930</span> := open
+
+<span class="comment">// Plot the 9:30 open price</span>
+<span class="function">plot</span>(<span class="variable">open930</span>, title=<span class="string">"9:30 Open Price"</span>, color=color.blue, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Long entry: close > 9:30 price + (0.3 * daily ATR)</span>
+<span class="variable">longCondition</span> = close > (<span class="variable">open930</span> + (<span class="number">0.3</span> * <span class="variable">atrDaily</span>))
+<span class="keyword">if</span> <span class="variable">longCondition</span> <span class="keyword">and</span> <span class="variable">inSession</span>
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, strategy.long, qty=<span class="number">2</span>)
+    <span class="function">strategy.exit</span>(<span class="string">"Long Stop"</span>, from_entry=<span class="string">"Long"</span>, stop=<span class="variable">open930</span>)
+
+<span class="comment">// Short entry: close < 9:30 price - (0.3 * daily ATR)</span>
+<span class="variable">shortCondition</span> = close < (<span class="variable">open930</span> - (<span class="number">0.3</span> * <span class="variable">atrDaily</span>))
+<span class="keyword">if</span> <span class="variable">shortCondition</span> <span class="keyword">and</span> <span class="variable">inSession</span>
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, strategy.short, qty=<span class="number">1</span>)
+    <span class="function">strategy.exit</span>(<span class="string">"Short Stop"</span>, from_entry=<span class="string">"Short"</span>, stop=<span class="variable">open930</span>)
+
+<span class="comment">// Close all positions at 4pm</span>
+<span class="keyword">if</span> hour(time) >= <span class="number">15</span>
+    <span class="function">strategy.close</span>(<span class="string">"Long"</span>)
+    <span class="function">strategy.close</span>(<span class="string">"Short"</span>)</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY DISCONTINUED -->
+  <h2 class="section-title">Warum ich das Projekt nicht weiterführe</h2>
+  
+  <div class="lessons-grid">
+    <div class="lesson-card warning">
+      <div class="lesson-title">
+        <span class="icon">⚠️</span> Plattform-Restriktionen
+      </div>
+      <div class="lesson-desc">
+        Viele Broker haben ihre Terms of Service bezüglich automatisierter Execution-Modelle verschärft. Ein langfristiger, stabiler Betrieb war unter diesen regulatorischen Unsicherheiten nicht gewährleistet.
+      </div>
+    </div>
+    <div class="lesson-card success">
+      <div class="lesson-title">
+        <span class="icon">🚀</span> Shift zu generativer KI
+      </div>
+      <div class="lesson-desc">
+        Während dieses Projekt rein regelbasiert war, sehe ich im Bereich Agentic AI deutlich größere Hebelwirkungen für die Analyse komplexer Märkte.
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNINGS -->
+  <h2 class="section-title">Was ich gelernt habe</h2>
+  
+  <div class="info-card">
+    <p>
+      Dieses Projekt war meine Einführung in die Welt des <strong style="color:var(--text)">quantitativen Tradings</strong>. Ich habe gelernt, Handelsstrategien in PineScript zu entwickeln und mathematisch fundierte <strong style="color:var(--text)">Markt-Edges</strong> zu identifizieren.
+    </p>
+    <p>
+      Dabei habe ich mich intensiv mit <strong style="color:var(--text)">Backtesting-Methoden</strong> auseinandergesetzt — inklusive Vermeidung von Overfitting und Monte-Carlo-Simulationen zur Robustheitsprüfung. Die Signal-Weiterleitung erfolgte über TradingView-Alerts und einen selbst gehosteten Server.
+    </p>
+  </div>
+
+</section>
+
+
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(function(m) { m.classList.remove('active'); });
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
 </body>
 </html>
